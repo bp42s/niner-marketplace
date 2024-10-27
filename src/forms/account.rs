@@ -1,4 +1,7 @@
-use crate::{common::{self}, listing};
+use crate::{
+    common::{self},
+    listing,
+};
 
 #[allow(dead_code)]
 pub struct Account {

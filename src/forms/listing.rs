@@ -1,4 +1,4 @@
-use crate::common::{self};
+use crate::common::{self, category};
 
 #[allow(dead_code)]
 pub struct Listing {
@@ -8,17 +8,24 @@ pub struct Listing {
     price: f64,
     price_negotiable: bool,
     discount: f64,
-    date_listed: common::date::Date,
-    date_end: common::date::Date,
-    category: Category,
+    listing_dates: ListingDates,
+    category: category::Category,
+    hidden: bool,
 }
 #[allow(dead_code)]
 impl Listing {
-    pub fn is_available() -> bool {
+    pub fn is_available(&self) -> bool {
+        if self.hidden == true {
+            return false;
+        };
         false
     }
 }
 
 #[allow(dead_code)]
-struct Category {}
-impl Category {}
+pub struct ListingDates {
+    no_end: bool,
+    date_listed: common::date::Date,
+    date_ending: common::date::Date,
+}
+impl ListingDates {}

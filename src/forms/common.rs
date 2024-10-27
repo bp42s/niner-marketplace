@@ -83,3 +83,14 @@ pub mod date {
     //Write a program that determines if a given year is a leap year
     //(divisible by 4, but not divisible by 100 unless divisible by 400).
 }
+
+#[allow(dead_code)]
+pub mod category {
+    pub enum Category {
+        Clothing,
+        Decoration,
+        Furniture,
+        Technology,
+    }
+    impl Category {}
+}
