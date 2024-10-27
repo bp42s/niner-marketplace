@@ -1,4 +1,4 @@
-use crate::common;
+use crate::common::{self};
 
 #[allow(dead_code)]
 pub struct Listing {
@@ -8,8 +8,8 @@ pub struct Listing {
     price: f64,
     price_negotiable: bool,
     discount: f64,
-    date_listed: common::Date,
-    date_end: common::Date,
+    date_listed: common::date::Date,
+    date_end: common::date::Date,
     category: Category,
 }
 #[allow(dead_code)]

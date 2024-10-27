@@ -1,5 +1,4 @@
-use crate::common;
-use crate::listing;
+use crate::{common::{self}, listing};
 
 #[allow(dead_code)]
 pub struct Account {
@@ -8,8 +7,8 @@ pub struct Account {
     id: i64,
     bio: String,
     rep: i32,
-    birthday: common::Date,
-    account_birthday: common::Date,
+    birthday: common::date::Date,
+    account_birthday: common::date::Date,
     listings: Vec<listing::Listing>,
     listings_featured: Vec<listing::Listing>,
 }
@@ -26,6 +25,9 @@ impl Account {
         self.listings_featured.push(listing);
     }
 }
+
+#[allow(dead_code)]
+pub fn create_account() {}
 
 #[allow(dead_code)]
 struct Password {
