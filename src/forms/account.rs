@@ -5,6 +5,7 @@ use crate::listing;
 pub struct Account {
     username: String,
     password: Password,
+    id: i64,
     bio: String,
     rep: i32,
     birthday: common::Date,

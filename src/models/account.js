@@ -12,6 +12,10 @@ const accountSchema = new Schema({
         type: String,
         require: true
     },
+    id: {
+        type: Number,
+        require: true
+    },
     bio: {
         type: String,
         require: true
