@@ -10,7 +10,7 @@ pub mod account {
         rep: i32,
         birthday: common::date::Date,
         account_birthday: common::date::Date,
-        listings: Vec<listing::Listing>,
+        listings_offered: Vec<listing::Listing>,
         listings_featured: Vec<listing::Listing>,
         listings_wanted: Vec<listing::Listing>,
         items_wanted: Vec<item::Item>,
@@ -21,8 +21,8 @@ pub mod account {
             true
         }
 
-        fn add_listing(&mut self, listing: listing::Listing) {
-            self.listings.push(listing);
+        fn add_listing_offered(&mut self, listing: listing::Listing) {
+            self.listings_offered.push(listing);
         }
 
         fn add_listing_featured(&mut self, listing: listing::Listing) {
