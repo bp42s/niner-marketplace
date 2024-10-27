@@ -12,7 +12,16 @@ pub struct Account {
     listings: Vec<listing::Listing>,
     listings_featured: Vec<listing::Listing>,
 }
-impl Account {}
+#[allow(dead_code)]
+impl Account {
+    fn add_listing(&mut self, listing: listing::Listing) {
+        self.listings.push(listing);
+    }
+
+    fn add_listing_featured(&mut self, listing: listing::Listing) {
+        self.listings_featured.push(listing);
+    }
+}
 
 #[allow(dead_code)]
 struct Password {
