@@ -10,9 +10,16 @@ pub struct Account {
     birthday: common::Date,
     account_birthday: common::Date,
     listings: Vec<listing::Listing>,
-    listing_featured: Vec<listing::Listing>,
+    listings_featured: Vec<listing::Listing>,
 }
 impl Account {}
 
-struct Password {}
-impl Password {}
+#[allow(dead_code)]
+struct Password {
+    password: String,
+}
+impl Password {
+    pub fn is_correct(&self, entry: String) -> bool {
+        false
+    }
+}
