@@ -7,7 +7,6 @@ pub struct Account {
     password: Password,
     bio: String,
     rep: i32,
-    profile_picture: image::Image,
     birthday: common::Date,
     account_birthday: common::Date,
     listings: Vec<listing::Listing>,
@@ -15,9 +14,5 @@ pub struct Account {
 }
 impl Account {}
 
-struct Password {
-
-}
-impl Password {
-    
-}
+struct Password {}
+impl Password {}
