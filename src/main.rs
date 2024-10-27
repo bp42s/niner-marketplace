@@ -7,5 +7,4 @@ mod listing;
 
 fn main() {
     println!("Hello, world!");
-
 }
