@@ -19,7 +19,8 @@ struct Password {
     password: String,
 }
 impl Password {
-    pub fn is_correct(&self, entry: String) -> bool {
+    #[allow(dead_code)]
+    pub fn is_correct(&self, _entry: String) -> bool {
         false
     }
 }
