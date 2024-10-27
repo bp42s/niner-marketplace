@@ -1,12 +1,3 @@
-#[path = "forms/account.rs"]
-mod account;
-#[path = "forms/common.rs"]
-mod common;
-#[path = "forms/item.rs"]
-mod item;
-#[path = "forms/listing.rs"]
-mod listing;
-
 use axum::{
     response::{Html, IntoResponse},
     routing::get,

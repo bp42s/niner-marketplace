@@ -1,7 +1,7 @@
 #[allow(dead_code)]
+
 pub mod account {
-    use crate::common::{self};
-    use crate::listing::listing;
+    use crate::{common, listing::listing};
 
     pub struct Account {
         username: String,

@@ -1,8 +1,6 @@
 #[allow(dead_code)]
 pub mod listing {
-    use crate::common::{category, date};
-    use crate::item::item;
-
+    use crate::{common::category, common::date, item::item};
     pub struct Listing {
         name: String,
         description: String,
@@ -34,4 +32,5 @@ pub mod listing {
         discount: f64,
         price_negotiable: bool,
     }
+    impl PriceData {}
 }
