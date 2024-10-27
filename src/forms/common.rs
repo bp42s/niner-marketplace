@@ -1,3 +1,4 @@
+#[allow(dead_code)]
 pub mod date {
     pub struct Date {
         month: i32,
@@ -6,7 +7,6 @@ pub mod date {
     }
 
     // NOT zero-indexed
-    #[allow(dead_code)]
     impl Date {
         pub fn get_mdy(&self) -> String {
             let result: String =
@@ -79,18 +79,25 @@ pub mod date {
             true
         }
     }
-
-    //Write a program that determines if a given year is a leap year
-    //(divisible by 4, but not divisible by 100 unless divisible by 400).
 }
 
 #[allow(dead_code)]
 pub mod category {
     pub enum Category {
-        Clothing,
+        ClothingType,
         Decoration,
         Furniture,
         Technology,
     }
     impl Category {}
+}
+
+#[allow(dead_code)]
+pub mod image {
+    pub struct Image {
+        path: String,
+        caption: String,
+        accessibility_text: String,
+    }
+    impl Image {}
 }

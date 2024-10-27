@@ -2,8 +2,8 @@
 mod account;
 #[path = "forms/common.rs"]
 mod common;
-#[path = "forms/image.rs"]
-mod image;
+#[path = "forms/item.rs"]
+mod item;
 #[path = "forms/listing.rs"]
 mod listing;
 
@@ -12,26 +12,24 @@ use axum::{
     routing::get,
     Router,
 };
-#[allow(unused_imports)]
-use std::{fs, net::SocketAddr};
 
 // handler functions - sends html/ejs content for requests
 async fn handler_index() -> impl IntoResponse {
-    match fs::read_to_string("views/index.ejs") {
+    match std::fs::read_to_string("views/index.ejs") {
         Ok(content) => Html(content),
         Err(e) => Html(format!("Error : {}", e)),
     }
 }
 
 async fn handler_about() -> impl IntoResponse {
-    match fs::read_to_string("views/about.ejs") {
+    match std::fs::read_to_string("views/about.ejs") {
         Ok(content) => Html(content),
         Err(e) => Html(format!("Error : {}", e)),
     }
 }
 
 async fn handler_404() -> impl IntoResponse {
-    match fs::read_to_string("views/404.ejs") {
+    match std::fs::read_to_string("views/404.ejs") {
         Ok(content) => Html(content),
         Err(e) => Html(format!("Error : {}", e)),
     }
