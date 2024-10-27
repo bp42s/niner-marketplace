@@ -14,6 +14,9 @@ pub struct Account {
 }
 #[allow(dead_code)]
 impl Account {
+    fn is_old_enough(&self) -> bool {
+        false
+    }
     fn add_listing(&mut self, listing: listing::Listing) {
         self.listings.push(listing);
     }

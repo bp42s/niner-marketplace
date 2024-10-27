@@ -6,11 +6,18 @@ pub struct Listing {
     description: String,
     highlight: String,
     price: f64,
+    price_negotiable: bool,
+    discount: f64,
     date_listed: common::Date,
     date_end: common::Date,
     category: Category,
 }
-impl Listing {}
+#[allow(dead_code)]
+impl Listing {
+    pub fn is_available() -> bool {
+        false
+    }
+}
 
 #[allow(dead_code)]
 struct Category {}
