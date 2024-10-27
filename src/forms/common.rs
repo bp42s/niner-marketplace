@@ -101,3 +101,14 @@ pub mod image {
     }
     impl Image {}
 }
+
+#[allow(dead_code)]
+pub mod keyword {
+    // reusable typing enum - siilar to a "tag"
+    pub enum Keyword {
+        Whimsical,
+        Colorful,
+        Dark,
+    }
+    impl Keyword {}
+}

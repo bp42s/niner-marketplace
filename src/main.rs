@@ -1,3 +1,12 @@
+#[path = "forms/account.rs"]
+pub mod account;
+#[path = "forms/common.rs"]
+pub mod common;
+#[path = "forms/item.rs"]
+pub mod item;
+#[path = "forms/listing.rs"]
+pub mod listing;
+
 use axum::{
     response::{Html, IntoResponse},
     routing::get,

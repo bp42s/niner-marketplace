@@ -1,22 +1,23 @@
 #[allow(dead_code)]
 pub mod listing {
-    use crate::{common::category, common::date, item::item};
+    use crate::{common::category, common::date, item::item, common::keyword};
     pub struct Listing {
         name: String,
         description: String,
         highlight: String,
+        hidden: bool,
         item: item::Item,
         price_data: PriceData,
         listing_date_data: ListingDateData,
         category: category::Category,
-        hidden: bool,
+        keywords: Vec<keyword::Keyword>,
     }
     impl Listing {
         pub fn is_available(&self) -> bool {
             if self.hidden {
                 return false;
             };
-            false
+            true
         }
     }
 
@@ -25,12 +26,21 @@ pub mod listing {
         date_listed: date::Date,
         date_ending: date::Date,
     }
-    impl ListingDateData {}
+    impl ListingDateData {
+        pub fn get_available(&self) -> bool {
+            true
+        }
+    }
 
     pub struct PriceData {
         price: f64,
         discount: f64,
         price_negotiable: bool,
     }
-    impl PriceData {}
+    impl PriceData {
+        pub fn price_with_discount(&self) -> f64 {
+            let result: f64 = self.price * self.discount;
+            result
+        }
+    }
 }

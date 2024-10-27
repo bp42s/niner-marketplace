@@ -1,7 +1,6 @@
 #[allow(dead_code)]
-
 pub mod account {
-    use crate::{common, listing::listing};
+    use crate::{common, listing::listing, common::keyword, item::item};
 
     pub struct Account {
         username: String,
@@ -13,11 +12,15 @@ pub mod account {
         account_birthday: common::date::Date,
         listings: Vec<listing::Listing>,
         listings_featured: Vec<listing::Listing>,
+        listings_wanted: Vec<listing::Listing>,
+        items_wanted: Vec<item::Item>,
+        keywords_wanted: Vec<keyword::Keyword>,
     }
     impl Account {
-        fn is_old_enough(&self) -> bool {
-            false
+        fn old_enough(&self) -> bool {
+            true
         }
+
         fn add_listing(&mut self, listing: listing::Listing) {
             self.listings.push(listing);
         }
