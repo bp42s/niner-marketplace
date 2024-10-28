@@ -51,6 +51,8 @@ async fn handler_404() -> impl IntoResponse {
 
 #[tokio::main]
 async fn main() {
+    std::print!("NinerMarket - Server starting up...");
+
     // initialize the server and handling
     let router: Router = Router::new()
         .route("/", get(handler_index))
@@ -62,5 +64,5 @@ async fn main() {
     // startup - runs on https://localhost:3000
     let listener = tokio::net::TcpListener::bind("0.0.0.0:3000").await.unwrap();
     axum::serve(listener, router).await.unwrap();
-    std::print!("NinerMarket - Running on port 3000!");
+    std::print!("NinerMarket - Server running on port 3000");
 }
