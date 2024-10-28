@@ -89,7 +89,6 @@ pub mod nm_date {
             }
             true
         }
-
     }
     pub fn get_current_date() -> String {
         let date = chrono::Local::now();

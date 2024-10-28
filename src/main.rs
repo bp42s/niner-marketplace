@@ -56,7 +56,7 @@ async fn main() {
         .route("/", get(handler_index))
         .route("/about", get(handler_about))
         .route("/account", get(handler_account))
-        .route("/chat", get(handler_account))
+        .route("/chat", get(handler_chat))
         .fallback(handler_404);
 
     // startup - runs on https://localhost:3000
