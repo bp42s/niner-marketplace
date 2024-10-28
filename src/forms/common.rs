@@ -38,7 +38,7 @@ pub mod date {
                 10 => String::from("October"),
                 11 => String::from("November"),
                 12 => String::from("December"),
-                _ => String::from("InvalidMonth"),
+                _ => String::from("ERROR_INVALID_MONTH"),
             }
         }
 
@@ -104,7 +104,7 @@ pub mod image {
 
 #[allow(dead_code)]
 pub mod keyword {
-    // reusable typing enum - siilar to a "tag"
+    // reusable typing enum - similar to a "tag"
     pub enum Keyword {
         Whimsical,
         Colorful,

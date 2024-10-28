@@ -1,10 +1,12 @@
 #[allow(dead_code)]
 pub mod listing {
-    use crate::{common::category, common::date, item::item, common::keyword};
+    use crate::{common::category, common::date, common::image, common::keyword, item::item};
     pub struct Listing {
         name: String,
         description: String,
         highlight: String,
+        image_thumbnail: image::Image,
+        image_showcase: Vec<image::Image>,
         hidden: bool,
         item: item::Item,
         price_data: PriceData,

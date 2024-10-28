@@ -1,15 +1,17 @@
 #[allow(dead_code)]
 pub mod account {
-    use crate::{common, listing::listing, common::keyword, item::item};
+    use crate::{common::date, common::image, common::keyword, item::item, listing::listing};
 
     pub struct Account {
         username: String,
         password: Password,
         id: i64,
         bio: String,
-        rep: i32,
-        birthday: common::date::Date,
-        account_birthday: common::date::Date,
+        profile_picture: image::Image,
+        background_picture: image::Image,
+        reputation: Reputation,
+        birthday: date::Date,
+        account_birthday: date::Date,
         listings_offered: Vec<listing::Listing>,
         listings_featured: Vec<listing::Listing>,
         listings_wanted: Vec<listing::Listing>,
@@ -38,6 +40,21 @@ pub mod account {
     impl Password {
         pub fn is_correct(&self, _entry: String) -> bool {
             false
+        }
+    }
+
+    pub struct Reputation {
+        rep: i32,
+    }
+    impl Reputation {
+        pub fn get_rep(&self) -> i32 {
+            self.rep
+        }
+        pub fn set_rep(&mut self, value: i32) {
+            self.rep = value
+        }
+        pub fn mod_rep(&mut self, amount: i32) {
+            self.rep = self.rep + amount
         }
     }
 }
