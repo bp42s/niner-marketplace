@@ -8,12 +8,13 @@ pub mod nm_listing {
         name: String,
         description: String,
         highlight: String,
+        listing_type: ListingType,
         image_thumbnail: nm_image::Image,
         image_showcase: Vec<nm_image::Image>,
         hidden: bool,
         item: nm_item::Item,
         price_data: PriceData,
-        listing_date_data: ListingDateData,
+        listing_dates: ListingDates,
         keywords: Vec<nm_keyword::Keyword>,
         tags: nm_tags::Tags,
     }
@@ -26,12 +27,29 @@ pub mod nm_listing {
         }
     }
 
-    pub struct ListingDateData {
+    pub struct ListingType {
+        // 0 = bin -> buy it now
+        // 1 = bid -> auction
+        // 2 = bidbin -> auction till a set bin price is reached
+        listing_type: i8,
+    }
+    impl ListingType {
+        pub fn listing_type_to_string(&self) -> String {
+            match self.listing_type {
+                0 => String::from("BIN"),
+                1 => String::from("BID"),
+                2 => String::from("BIDBIN"),
+                _ => String::from("ERROR_INVALID_LISTING_TYPE"),
+            }
+        }
+    }
+
+    pub struct ListingDates {
         no_end: bool,
         date_listed: nm_date::Date,
         date_ending: nm_date::Date,
     }
-    impl ListingDateData {
+    impl ListingDates {
         pub fn get_available(&self) -> bool {
             if self.no_end {
                 return true;

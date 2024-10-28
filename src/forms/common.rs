@@ -23,7 +23,7 @@ pub mod nm_date {
             result
         }
 
-        pub fn is_valid_date(&self, date: Date) -> bool {
+        pub fn valid_date(&self, date: Date) -> bool {
             if date.month > 12 || date.month < 1 {
                 return false;
             }
@@ -33,6 +33,21 @@ pub mod nm_date {
                 return false;
             }
             true
+        }
+
+        pub fn is_before(&self, other: Date) -> bool {
+            // returns true if &self is chronologically BEFORE other
+            // returns false if &self is chronologically AFTER other
+            if self.year < other.year {
+                return true;
+            }
+            if self.month < other.month {
+                return true;
+            }
+            if self.day < other.day {
+                return true;
+            }
+            false
         }
 
         pub fn get_month_str(&self) -> String {

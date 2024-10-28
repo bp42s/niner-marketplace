@@ -7,32 +7,29 @@ pub mod nm_account {
     };
 
     pub struct Account {
+        id: u64,
         username: String,
         password: Password,
-        id: u64,
         bio: String,
         profile_picture: nm_image::Image,
         background_picture: nm_image::Image,
         reputation: Reputation,
-        user_birthday: nm_date::Date,
-        account_birthday: nm_date::Date,
-        listings_offered: Vec<nm_listing::Listing>,
-        listings_featured: Vec<nm_listing::Listing>,
-        listings_wanted: Vec<nm_listing::Listing>,
-        items_wanted: Vec<nm_item::Item>,
-        keywords_wanted: Vec<nm_keyword::Keyword>,
+        account_dates: AccountDates,
+        listing_data: ListingData,
     }
     impl Account {
         fn old_enough(&self) -> bool {
+            // get current m/d/y
+            // check if acount_dates.user_birthday is >= 18 years old
             true
         }
 
         fn add_listing_offered(&mut self, listing: nm_listing::Listing) {
-            self.listings_offered.push(listing);
+            self.listing_data.listings_offered.push(listing);
         }
 
         fn add_listing_featured(&mut self, listing: nm_listing::Listing) {
-            self.listings_featured.push(listing);
+            self.listing_data.listings_featured.push(listing);
         }
 
         // reputation functions
@@ -61,6 +58,27 @@ pub mod nm_account {
 
     pub struct Reputation {
         rep: i32,
+        display: String,
     }
-    impl Reputation {}
+    impl Reputation {
+        pub fn display_rep(&self) -> String {
+            let rep: i32 = self.rep;    // extract value once so we don't have to access it
+            String::from("temp_reputation_display_rep")
+        }
+    }
+
+    pub struct AccountDates {
+        user_birthday: nm_date::Date,
+        account_birthday: nm_date::Date,
+    }
+    impl AccountDates {}
+
+    pub struct ListingData {
+        listings_offered: Vec<nm_listing::Listing>, // listings up for sale
+        listings_featured: Vec<nm_listing::Listing>, // top x listings displayed on profile
+        watched_listings: Vec<nm_listing::Listing>, // listings that the user wants, receive notifications for offers on listing
+        wanted_items: Vec<nm_item::Item>,           // "looking for" items
+        wanted_keywords: Vec<nm_keyword::Keyword>,  // preferred keywords
+    }
+    impl ListingData {}
 }
