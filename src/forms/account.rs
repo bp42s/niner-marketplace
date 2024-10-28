@@ -5,12 +5,12 @@ pub mod account {
     pub struct Account {
         username: String,
         password: Password,
-        id: i64,
+        id: u64,
         bio: String,
         profile_picture: image::Image,
         background_picture: image::Image,
         reputation: Reputation,
-        birthday: date::Date,
+        user_birthday: date::Date,
         account_birthday: date::Date,
         listings_offered: Vec<listing::Listing>,
         listings_featured: Vec<listing::Listing>,
@@ -49,6 +49,7 @@ pub mod account {
         password: String,
     }
     impl Password {
+        // primitive - needs proper handling
         pub fn is_correct(&self, _entry: String) -> bool {
             false
         }

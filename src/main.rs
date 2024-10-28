@@ -28,6 +28,13 @@ async fn handler_about() -> impl IntoResponse {
     }
 }
 
+async fn handler_account() -> impl IntoResponse {
+    match std::fs::read_to_string("views/account.ejs") {
+        Ok(content) => Html(content),
+        Err(e) => Html(format!("Error : {}", e)),
+    }
+}
+
 async fn handler_404() -> impl IntoResponse {
     match std::fs::read_to_string("views/404.ejs") {
         Ok(content) => Html(content),
@@ -41,9 +48,11 @@ async fn main() {
     let router: Router = Router::new()
         .route("/", get(handler_index))
         .route("/about", get(handler_about))
+        .route("/account", get(handler_account))
         .fallback(handler_404);
 
     // startup - runs on https://localhost:3000
     let listener = tokio::net::TcpListener::bind("0.0.0.0:3000").await.unwrap();
     axum::serve(listener, router).await.unwrap();
+    std::print!("NinerMarket - Running on port 3000!");
 }
