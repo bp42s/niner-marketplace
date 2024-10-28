@@ -35,6 +35,13 @@ async fn handler_account() -> impl IntoResponse {
     }
 }
 
+async fn handler_chat() -> impl IntoResponse {
+    match std::fs::read_to_string("views/chat.ejs") {
+        Ok(content) => Html(content),
+        Err(e) => Html(format!("Error : {}", e)),
+    }
+}
+
 async fn handler_404() -> impl IntoResponse {
     match std::fs::read_to_string("views/404.ejs") {
         Ok(content) => Html(content),
@@ -49,6 +56,7 @@ async fn main() {
         .route("/", get(handler_index))
         .route("/about", get(handler_about))
         .route("/account", get(handler_account))
+        .route("/chat", get(handler_account))
         .fallback(handler_404);
 
     // startup - runs on https://localhost:3000
