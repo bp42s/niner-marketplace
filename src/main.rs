@@ -1,11 +1,11 @@
 #[path = "forms/account.rs"]
-pub mod account;
+pub mod nm_account;
 #[path = "forms/common.rs"]
-pub mod common;
+pub mod nm_common;
 #[path = "forms/item.rs"]
-pub mod item;
+pub mod nm_item;
 #[path = "forms/listing.rs"]
-pub mod listing;
+pub mod nm_listing;
 
 use axum::{
     response::{Html, IntoResponse},
