@@ -1,33 +1,33 @@
 #[allow(dead_code)]
-pub mod account {
-    use crate::{common::date, common::image, common::keyword, item::item, listing::listing};
+pub mod nm_account {
+    use crate::{common::nm_date, common::nm_image, common::nm_keyword, item::nm_item, listing::nm_listing};
 
     pub struct Account {
         username: String,
         password: Password,
         id: u64,
         bio: String,
-        profile_picture: image::Image,
-        background_picture: image::Image,
+        profile_picture: nm_image::Image,
+        background_picture: nm_image::Image,
         reputation: Reputation,
-        user_birthday: date::Date,
-        account_birthday: date::Date,
-        listings_offered: Vec<listing::Listing>,
-        listings_featured: Vec<listing::Listing>,
-        listings_wanted: Vec<listing::Listing>,
-        items_wanted: Vec<item::Item>,
-        keywords_wanted: Vec<keyword::Keyword>,
+        user_birthday: nm_date::Date,
+        account_birthday: nm_date::Date,
+        listings_offered: Vec<nm_listing::Listing>,
+        listings_featured: Vec<nm_listing::Listing>,
+        listings_wanted: Vec<nm_listing::Listing>,
+        items_wanted: Vec<nm_item::Item>,
+        keywords_wanted: Vec<nm_keyword::Keyword>,
     }
     impl Account {
         fn old_enough(&self) -> bool {
             true
         }
 
-        fn add_listing_offered(&mut self, listing: listing::Listing) {
+        fn add_listing_offered(&mut self, listing: nm_listing::Listing) {
             self.listings_offered.push(listing);
         }
 
-        fn add_listing_featured(&mut self, listing: listing::Listing) {
+        fn add_listing_featured(&mut self, listing: nm_listing::Listing) {
             self.listings_featured.push(listing);
         }
 
@@ -39,7 +39,7 @@ pub mod account {
             self.reputation.rep = value
         }
         pub fn mod_rep(&mut self, amount: i32) {
-            self.reputation.rep = self.reputation.rep + amount
+            self.reputation.rep += amount
         }
     }
 

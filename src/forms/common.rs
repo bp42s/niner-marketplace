@@ -1,5 +1,5 @@
 #[allow(dead_code)]
-pub mod date {
+pub mod nm_date {
     pub struct Date {
         month: i32,
         day: i32,
@@ -90,7 +90,7 @@ pub mod date {
 }
 
 #[allow(dead_code)]
-pub mod image {
+pub mod nm_image {
     pub struct Image {
         path: String,
         caption: String,
@@ -100,7 +100,7 @@ pub mod image {
 }
 
 #[allow(dead_code)]
-pub mod keyword {
+pub mod nm_keyword {
     // reusable typing enum - similar to a "tag"
     pub enum Keyword {
         Whimsical,
@@ -111,7 +111,7 @@ pub mod keyword {
 }
 
 #[allow(dead_code)]
-pub mod tags {
+pub mod nm_tags {
     pub struct Tags {
         price_negotiable: bool,
         price_firm: bool,
@@ -121,11 +121,11 @@ pub mod tags {
         pub fn get_price_negotiable(&self) -> bool {
             self.price_negotiable
         }
-        
+
         pub fn get_price_firm(&self) -> bool {
             self.price_firm
         }
-        
+
         pub fn get_urgent(&self) -> bool {
             self.urgent
         }

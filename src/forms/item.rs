@@ -1,5 +1,5 @@
 #[allow(dead_code)]
-pub mod item {
+pub mod nm_item {
     // generic type for listing
     pub struct Item {
         item_type: ItemType,

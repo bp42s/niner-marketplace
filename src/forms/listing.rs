@@ -1,18 +1,18 @@
 #[allow(dead_code)]
-pub mod listing {
-    use crate::{common::date, common::image, common::keyword, common::tags, item::item};
+pub mod nm_listing {
+    use crate::{common::nm_date, common::nm_image, common::nm_keyword, common::nm_tags, item::nm_item};
     pub struct Listing {
         name: String,
         description: String,
         highlight: String,
-        image_thumbnail: image::Image,
-        image_showcase: Vec<image::Image>,
+        image_thumbnail: nm_image::Image,
+        image_showcase: Vec<nm_image::Image>,
         hidden: bool,
-        item: item::Item,
+        item: nm_item::Item,
         price_data: PriceData,
         listing_date_data: ListingDateData,
-        keywords: Vec<keyword::Keyword>,
-        tags: tags::Tags,
+        keywords: Vec<nm_keyword::Keyword>,
+        tags: nm_tags::Tags,
     }
     impl Listing {
         pub fn is_available(&self) -> bool {
@@ -25,8 +25,8 @@ pub mod listing {
 
     pub struct ListingDateData {
         no_end: bool,
-        date_listed: date::Date,
-        date_ending: date::Date,
+        date_listed: nm_date::Date,
+        date_ending: nm_date::Date,
     }
     impl ListingDateData {
         pub fn get_available(&self) -> bool {
@@ -48,7 +48,7 @@ pub mod listing {
         }
 
         pub fn take_fee(&mut self, amount: f64) -> f64 {
-            self.price = self.price - amount;
+            self.price -= amount;
             amount
         }
     }
