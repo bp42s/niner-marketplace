@@ -1,11 +1,11 @@
 #[path = "forms/account.rs"]
-pub mod account;
+pub mod nm_account;
 #[path = "forms/common.rs"]
-pub mod common;
+pub mod nm_common;
 #[path = "forms/item.rs"]
-pub mod item;
+pub mod nm_item;
 #[path = "forms/listing.rs"]
-pub mod listing;
+pub mod nm_listing;
 
 use axum::{
     response::{Html, IntoResponse},
@@ -44,13 +44,15 @@ async fn handler_404() -> impl IntoResponse {
 
 #[tokio::main]
 async fn main() {
+    // initialize the server and handling
     let router: Router = Router::new()
         .route("/", get(handler_index))
         .route("/about", get(handler_about))
         .route("/account", get(handler_account))
         .fallback(handler_404);
 
-    // runs on localhost:3000
+    // startup - runs on https://localhost:3000
     let listener = tokio::net::TcpListener::bind("0.0.0.0:3000").await.unwrap();
     axum::serve(listener, router).await.unwrap();
+    std::print!("NinerMarket - Running on port 3000!");
 }
