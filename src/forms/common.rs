@@ -1,5 +1,8 @@
 #[allow(dead_code)]
 pub mod nm_date {
+
+    extern crate chrono;
+
     pub struct Date {
         month: i32,
         day: i32,
@@ -86,6 +89,11 @@ pub mod nm_date {
             }
             true
         }
+
+    }
+    pub fn get_current_date() -> String {
+        let date = chrono::Local::now();
+        date.format("%M//%D//%Y").to_string()
     }
 }
 
