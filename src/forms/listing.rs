@@ -1,6 +1,6 @@
 #[allow(dead_code)]
 pub mod nm_listing {
-    use crate::{common::nm_date, common::nm_image, common::nm_keyword, common::nm_tags, item::nm_item};
+    use crate::{nm_common::{nm_date, nm_image, nm_keyword, nm_tags}, nm_item::nm_item};
     pub struct Listing {
         name: String,
         description: String,

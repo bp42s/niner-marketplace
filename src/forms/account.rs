@@ -1,6 +1,7 @@
 #[allow(dead_code)]
 pub mod nm_account {
-    use crate::{common::nm_date, common::nm_image, common::nm_keyword, item::nm_item, listing::nm_listing};
+    use crate::{nm_common::{nm_date, nm_image, nm_keyword}, nm_item::nm_item};
+    use crate::nm_listing::nm_listing;
 
     pub struct Account {
         username: String,
