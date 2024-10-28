@@ -10,9 +10,7 @@ pub mod nm_account {
         id: u64,
         username: String,
         password: Password,
-        bio: String,
-        profile_picture: nm_image::Image,
-        background_picture: nm_image::Image,
+        profile_data: ProfileData,
         reputation: Reputation,
         account_dates: AccountDates,
         listing_data: ListingData,
@@ -56,13 +54,20 @@ pub mod nm_account {
         }
     }
 
+    pub struct ProfileData {
+        bio: String,
+        profile_picture: nm_image::Image,
+        background_picture: nm_image::Image,
+    }
+    impl ProfileData {}
+
     pub struct Reputation {
         rep: i32,
         display: String,
     }
     impl Reputation {
         pub fn display_rep(&self) -> String {
-            let rep: i32 = self.rep;    // extract value once so we don't have to access it
+            let _rep: i32 = self.rep; // extract value once so we don't have to keep accessing it
             String::from("temp_reputation_display_rep")
         }
     }
@@ -71,11 +76,25 @@ pub mod nm_account {
         user_birthday: nm_date::Date,
         account_birthday: nm_date::Date,
     }
-    impl AccountDates {}
+    impl AccountDates {
+        pub fn is_user_birthday(&self, current_date: nm_date::Date) -> bool {
+            if self.user_birthday.get_mdy() == current_date.get_mdy() {
+                return true;
+            }
+            false
+        }
+
+        pub fn is_account_birthday(&self, current_date: nm_date::Date) -> bool {
+            if self.account_birthday.get_mdy() == current_date.get_mdy() {
+                return true;
+            }
+            false
+        }
+    }
 
     pub struct ListingData {
         listings_offered: Vec<nm_listing::Listing>, // listings up for sale
-        listings_featured: Vec<nm_listing::Listing>, // top x listings displayed on profile
+        listings_featured: Vec<nm_listing::Listing>, // highlighted listings displayed on profile
         watched_listings: Vec<nm_listing::Listing>, // listings that the user wants, receive notifications for offers on listing
         wanted_items: Vec<nm_item::Item>,           // "looking for" items
         wanted_keywords: Vec<nm_keyword::Keyword>,  // preferred keywords
