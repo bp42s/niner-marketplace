@@ -20,8 +20,16 @@ pub mod date {
             result
         }
 
-        pub fn valid_date(&self) -> bool {
-            false
+        pub fn is_valid_date(&self, date: Date) -> bool {
+            if date.month > 12 || date.month < 1 {
+                return false;
+            }
+            let day: i32 = date.day;
+            let day_max: i32 = date.get_month_max_days();
+            if day > day_max || day < 1 {
+                return false;
+            }
+            true
         }
 
         pub fn get_month_str(&self) -> String {
@@ -82,17 +90,6 @@ pub mod date {
 }
 
 #[allow(dead_code)]
-pub mod category {
-    pub enum Category {
-        ClothingType,
-        Decoration,
-        Furniture,
-        Technology,
-    }
-    impl Category {}
-}
-
-#[allow(dead_code)]
 pub mod image {
     pub struct Image {
         path: String,
@@ -111,4 +108,26 @@ pub mod keyword {
         Dark,
     }
     impl Keyword {}
+}
+
+#[allow(dead_code)]
+pub mod tags {
+    pub struct Tags {
+        price_negotiable: bool,
+        price_firm: bool,
+        urgent: bool,
+    }
+    impl Tags {
+        pub fn get_price_negotiable(&self) -> bool {
+            self.price_negotiable
+        }
+        
+        pub fn get_price_firm(&self) -> bool {
+            self.price_firm
+        }
+        
+        pub fn get_urgent(&self) -> bool {
+            self.urgent
+        }
+    }
 }
