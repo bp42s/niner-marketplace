@@ -30,6 +30,17 @@ pub mod account {
         fn add_listing_featured(&mut self, listing: listing::Listing) {
             self.listings_featured.push(listing);
         }
+
+        // reputation functions
+        pub fn get_rep(&self) -> i32 {
+            self.reputation.rep
+        }
+        pub fn set_rep(&mut self, value: i32) {
+            self.reputation.rep = value
+        }
+        pub fn mod_rep(&mut self, amount: i32) {
+            self.reputation.rep = self.reputation.rep + amount
+        }
     }
 
     pub fn create_account() {}
@@ -46,15 +57,5 @@ pub mod account {
     pub struct Reputation {
         rep: i32,
     }
-    impl Reputation {
-        pub fn get_rep(&self) -> i32 {
-            self.rep
-        }
-        pub fn set_rep(&mut self, value: i32) {
-            self.rep = value
-        }
-        pub fn mod_rep(&mut self, amount: i32) {
-            self.rep = self.rep + amount
-        }
-    }
+    impl Reputation {}
 }
