@@ -11,7 +11,7 @@ pub mod nm_account {
         username: String,
         password: Password,
         profile_data: ProfileData,
-        reputation: Reputation,
+        reputation: ReputationData,
         account_dates: AccountDates,
         listing_data: ListingData,
     }
@@ -61,11 +61,11 @@ pub mod nm_account {
     }
     impl ProfileData {}
 
-    pub struct Reputation {
+    pub struct ReputationData {
         rep: i32,
         display: String,
     }
-    impl Reputation {
+    impl ReputationData {
         pub fn display_rep(&self) -> String {
             let _rep: i32 = self.rep; // extract value once so we don't have to keep accessing it
             String::from("temp_reputation_display_rep")
