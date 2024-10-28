@@ -105,7 +105,10 @@ pub mod nm_date {
             true
         }
     }
-    pub fn get_current_date() -> String {
+    pub fn get_current_date() {
+        // TODO - return date struct
+    }
+    pub fn get_current_date_str() -> String {
         let date = chrono::Local::now();
         date.format("%M//%D//%Y").to_string()
     }
