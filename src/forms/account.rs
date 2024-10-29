@@ -1,5 +1,6 @@
 #[allow(dead_code)]
 pub mod nm_account {
+
     use crate::nm_listing::nm_listing;
     use crate::{
         nm_common::{nm_date, nm_image, nm_keyword},
@@ -63,11 +64,18 @@ pub mod nm_account {
 
     pub struct ReputationData {
         rep: i32,
-        display: String,
+        title: String,
     }
     impl ReputationData {
-        pub fn display_rep(&self) -> String {
-            let _rep: i32 = self.rep; // extract value once so we don't have to keep accessing it
+        pub fn update_title(&self) -> String {
+            let rep: i32 = self.rep; // extract value once so we don't have to keep accessing it
+            if rep == 0 {
+                return String::from("rep_title_lvl0");
+            } else if rep == 10 {
+                return String::from("rep_title_lvl1");
+            } else if rep == 20 {
+                return String::from("rep_title_lvl2");
+            }
             String::from("temp_reputation_display_rep")
         }
     }
