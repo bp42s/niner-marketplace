@@ -1,4 +1,3 @@
-pub mod handler;
 #[path = "forms/account.rs"]
 pub mod nm_account;
 #[path = "forms/common.rs"]
@@ -7,6 +6,7 @@ pub mod nm_common;
 pub mod nm_item;
 #[path = "forms/listing.rs"]
 pub mod nm_listing;
+pub mod handlers;
 
 use axum::{routing::get, Router};
 
@@ -16,11 +16,11 @@ async fn main() {
 
     // initialize the server and handling
     let router: Router = Router::new()
-        .route("/", get(handler::handler_index))
-        .route("/about", get(handler::handler_about))
-        .route("/account", get(handler::handler_account))
-        .route("/chat", get(handler::handler_chat))
-        .fallback(handler::handler_404);
+        .route("/", get(handlers::handler_index))
+        .route("/about", get(handlers::handler_about))
+        .route("/account", get(handlers::handler_account))
+        .route("/chat", get(handlers::handler_chat))
+        .fallback(handlers::handler_404);
 
     // startup - runs on https://localhost:3000
     let listener = tokio::net::TcpListener::bind("0.0.0.0:3000").await.unwrap();

@@ -56,6 +56,7 @@ pub mod nm_item {
         Compression,
         Stockings,
         Graphic,
+        Dress,
     }
     pub enum Shoes {
         Sneakers,
@@ -66,6 +67,8 @@ pub mod nm_item {
         Sandals,
         FlipFlops,
         Ballet,
+        HighHeels,
+        Slipper,
     }
 
     pub enum Decoration {}
