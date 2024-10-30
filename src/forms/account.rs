@@ -13,7 +13,7 @@ pub mod nm_account {
         password: Password,
         profile_data: ProfileData,
         reputation: ReputationData,
-        account_dates: AccountDates,
+        dates: DateData,
         listing_data: ListingData,
     }
     impl Account {
@@ -80,11 +80,11 @@ pub mod nm_account {
         }
     }
 
-    pub struct AccountDates {
+    pub struct DateData {
         user_birthday: nm_date::Date,
         account_birthday: nm_date::Date,
     }
-    impl AccountDates {
+    impl DateData {
         pub fn is_user_birthday(&self, current_date: nm_date::Date) -> bool {
             if self.user_birthday.get_mdy() == current_date.get_mdy() {
                 return true;
